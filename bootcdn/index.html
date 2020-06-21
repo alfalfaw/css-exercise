@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>侧边导航栏</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        font-size: 1.4rem;
+      }
+      .inner-width {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      header {
+        background: #27ae60;
+      }
+      .top-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+      }
+      header .right ul {
+        display: flex;
+        vertical-align: bottom;
+        height: 100%;
+
+        align-items: center;
+      }
+
+      header .right ul li a {
+        line-height: 25px;
+        text-align: center;
+        display: block;
+        height: 25px;
+        width: 50px;
+      }
+      header a {
+        color: white;
+      }
+      header .left {
+        font-size: 2.6rem;
+      }
+      header .left .divider {
+        display: inline-block;
+        height: 2rem;
+        width: 0.1rem;
+        background: white;
+      }
+      .nav {
+        background: #27ae60;
+        color: white;
+        text-align: center;
+        padding-bottom: 30px;
+      }
+      .nav h1 {
+        font-size: 5.6rem;
+        text-shadow: -5px 5px 0 rgba(0, 0, 0, 0.1);
+      }
+      .nav h2 {
+        margin: 1rem auto;
+      }
+      .nav .search {
+        margin-top: 2.6rem;
+        position: relative;
+        max-width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .nav .search input {
+        padding: 13px 30px;
+        font-size: 1.6rem;
+        width: 100%;
+      }
+      .nav .search input:focus {
+        outline: none;
+      }
+      .nav .search .fa {
+        position: absolute;
+        right: 10px;
+        color: #ccc;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .user-list {
+        border-bottom: 1px solid #e3e3e3;
+        border-top: 1px solid #e3e3e3;
+        text-align: center;
+        background: #f5f5f5;
+        padding: 10px 0;
+      }
+      .user-list ul {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .user-list li a {
+        color: #ccc;
+      }
+      .user-list .fa {
+        font-size: 3.2rem;
+      }
+      .package-list {
+        margin-top: 6rem;
+      }
+      .package-list article {
+        padding: 30px 20px 35px 20px;
+        display: flex;
+        border: 1px solid #ecf0f1;
+      }
+      .package-list h1 {
+        width: 150px;
+      }
+      .package-list p {
+        color: #777;
+      }
+      .top {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        background: rgba(39, 174, 96, 0.6);
+        bottom: 40px;
+        right: 40px;
+
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
+      .top.active {
+        display: flex;
+      }
+      .top:hover {
+        background: #295;
+      }
+      .top::after {
+        content: "";
+        display: block;
+        height: 10px;
+        width: 10px;
+        border: 2px solid #fff;
+        border-bottom: none;
+        border-left: none;
+        transform: rotate(-45deg);
+        position: relative;
+        top: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner-width">
+        <div class="top-nav">
+          <div class="left">
+            <a href="#">BootCDN</a>
+            <span class="divider"></span>
+            <a href="#">猫云</a>
+          </div>
+          <div class="right">
+            <ul>
+              <li><a href="#">API</a></li>
+              <li><a href="#">官博</a></li>
+              <li><a href="#">关于</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="nav">
+      <div class="inner-width">
+        <h1 class="title">BootCDN</h1>
+        <h2>稳定、快速、免费的前端开源项目 CDN 加速服务</h2>
+        <span>共收录了 3606 个前端开源项目</span>
+        <div class="search">
+          <input type="text" placeholder="搜索开源库，例如：jquery" />
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section class="user-list">
+        <div class="inner-width">
+          <ul>
+            <li>
+              <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-amazon" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-apple" aria-hidden="true"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="package-list">
+        <div class="inner-width">
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+          <article>
+            <h1>vue</h1>
+            <p>
+              Vue
+              是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue
+              被设计为可以自底向上逐层应用。Vue
+              的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <div class="top"></div>
+
+    <script>
+      function scrollToTop() {
+        if (document.documentElement.scrollTop || document.body.scrollTop) {
+          window.scrollBy(0, -20);
+          window.requestAnimationFrame(scrollToTop);
+        }
+      }
+      var back = document.querySelector(".top");
+      back.onclick = function () {
+        scrollToTop();
+      };
+      window.onscroll = function () {
+        var y = document.documentElement.scrollTop || document.body.scrollTop;
+        if (y > 60) {
+          back.classList.add("active");
+        } else {
+          back.classList.remove("active");
+        }
+      };
+    </script>
+  </body>
+</html>

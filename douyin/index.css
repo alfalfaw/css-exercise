@@ -1,0 +1,307 @@
+@import "./style.css";
+
+/* 头部 */
+header {
+  height: 80px;
+  padding: 0 15px 0 30px;
+  /* 栅格布局 */
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+  position: relative;
+  z-index: 200;
+}
+/* 导航 */
+header nav {
+  justify-self: end;
+  font-weight: bold;
+}
+header nav > ul {
+  display: flex;
+  align-items: center;
+}
+header nav > ul > li {
+  margin: 0 15px;
+}
+
+header nav a {
+  display: block;
+  color: var(--text-color-lightest);
+}
+header .sub-menu {
+  margin-left: -5px;
+  text-align: left;
+  padding: 5px;
+  position: absolute;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.65s ease;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+header .sub-menu a {
+  color: #333;
+}
+header nav > ul > li:hover .sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* logo  */
+.logo {
+  z-index: 999;
+}
+.logo img {
+  height: 45px;
+}
+.logo a {
+  display: inline-block;
+}
+
+/* 折叠菜单 */
+header .burger {
+  display: none;
+}
+
+/* 容器 */
+.container {
+  position: relative;
+  top: -80px;
+  z-index: 50;
+  overflow: hidden;
+  margin-bottom: -80px;
+}
+/* 标题 */
+.container .caption {
+  position: absolute;
+  bottom: 230px;
+  right: 30px;
+  z-index: 50;
+}
+.container .caption h1 {
+  text-align: right;
+  color: white;
+  font-size: 80px;
+  font-style: italic;
+}
+
+/* 视频 */
+.container video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  float: left;
+}
+/* 按钮组 */
+.btn-group,
+.btn-list {
+  display: flex;
+  align-items: center;
+}
+.btn-group {
+  justify-content: flex-end;
+}
+.btn-list .btn-item {
+  width: 139px;
+  display: grid;
+  justify-items: center;
+  grid-template-areas: "icon platform" "icon content";
+  grid-template-columns: 32px 1fr;
+  background: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 4px;
+  column-gap: 8px;
+}
+.btn-list .btn-item:first-child {
+  margin-right: 10px;
+}
+.btn-item .icon {
+  grid-area: icon;
+  font-size: 28px;
+}
+.btn-item .platform {
+  grid-area: platform;
+  font-size: 18px;
+  justify-self: start;
+}
+.btn-item .content {
+  grid-area: content;
+  font-size: 12px;
+  justify-self: start;
+}
+/* 二维码 */
+.qr-code {
+  margin-left: 10px;
+  height: 48px;
+  width: 48px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  position: relative;
+  background: white;
+}
+.qr-code span {
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.switch {
+  position: absolute;
+  z-index: 100;
+  color: white;
+  right: 25px;
+  top: 80px;
+  display: block;
+  height: 30px;
+  width: 30px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.65s;
+}
+.switch:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+.switch span {
+  font-size: 20px;
+}
+
+/* footer  */
+footer {
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 80;
+  text-align: center;
+}
+
+@media screen and (max-width: 968px) {
+  header {
+    padding: 0 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+  header .sub-menu {
+    height: initial;
+  }
+  nav {
+    display: none;
+  }
+  header nav > ul {
+    align-items: flex-end;
+  }
+  /* 全屏导航显示时，导航菜单样式 */
+  header.open nav {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background: white;
+    width: 100%;
+    opacity: 0;
+    /* 下滑效果 */
+    animation: slideDown 0.6s ease-out forwards;
+  }
+  header nav > ul > li:hover .sub-menu {
+    position: relative;
+  }
+  header nav > ul {
+    padding-top: 80px;
+  }
+  header nav a {
+    color: var(--text-color-darker);
+  }
+  header .sub-menu {
+    text-align: right;
+    background: #f9f9f9;
+  }
+
+  header .burger {
+    display: block;
+    justify-self: end;
+    cursor: pointer;
+    position: relative;
+  }
+  /* 折叠按钮线条样式 */
+  .burger-line {
+    width: 20px;
+    height: 2px;
+    background-color: var(--text-color-lightest);
+    /* position: relative; */
+  }
+
+  /* 上移第一条线 */
+  .burger-line1 {
+    position: absolute;
+    top: -6px;
+  }
+  /* 下移第三条线 */
+  .burger-line3 {
+    position: absolute;
+    top: 6px;
+  }
+
+  /* 全屏导航展开时，折叠按钮设置为深色 */
+  header.open .burger-line {
+    background-color: var(--text-color-darker);
+    transition: 0.4s ease;
+  }
+
+  /* 全屏导航显示时，折叠按钮第一条线样式 */
+  header.open .burger-line1 {
+    transform: rotate(45deg) translate(3px, 5px);
+  }
+
+  /* 全屏导航显示时，折叠按钮第二条线样式 */
+  header.open .burger-line2 {
+    transform: translateX(5px);
+    opacity: 0;
+  }
+
+  /* 全屏导航显示时，折叠按钮第三条线样式 */
+  header.open .burger-line3 {
+    transform: rotate(-45deg) translate(3px, -5px);
+  }
+
+  header.open nav > ul {
+    flex-direction: column;
+  }
+  header nav > ul > li {
+    text-align: right;
+    margin: 0 30px;
+    line-height: 30px;
+  }
+}
+
+/* 导航下滑动画 */
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100vh;
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 550px) {
+  .container .caption h1 {
+    font-size: 52px;
+  }
+  header {
+    padding: 0 15px;
+  }
+  .container .caption {
+    right: 10px;
+  }
+  .switch {
+    right: 10px;
+  }
+}
